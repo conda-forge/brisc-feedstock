@@ -13,7 +13,7 @@ source:
   sha256: 38ca763f250e6940984ca83512df6da7b6187db4e60dd00ca0d021ee0053298f
 
 build:
-  number: 0
+  number: 1
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -32,6 +32,8 @@ requirements:
       then: llvm-openmp
     - if: x86_64
       then: libblas * *mkl
+    - if: osx and arm64
+      then: libblas * *newaccelerate
   run:
     - python
     - anndata
@@ -50,6 +52,8 @@ requirements:
       then: llvm-openmp
     - if: x86_64
       then: libblas * *mkl
+    - if: osx and arm64
+      then: libblas * *newaccelerate
 
 tests:
   - python:
