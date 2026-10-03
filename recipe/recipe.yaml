@@ -13,8 +13,19 @@ source:
   sha256: 6eb50bb4bfe09179af75ea7869153dd919b709afc711448be7a4096ac49eacda
 
 build:
-  number: 0
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
+  script:
+    interpreter: python
+    content: |
+      # Build without -Werror and /WX, so new compiler warnings don't fail
+      # the build
+      import os, pathlib, re, subprocess
+      p = pathlib.Path('setup.py')
+      s, n = re.subn(r"""['"](?:-Werror|/WX)['"][ \t]*,?[ \t]*""", '', p.read_text())
+      assert n, 'no -Werror or /WX found in setup.py'
+      p.write_text(s)
+      subprocess.check_call([os.environ['PYTHON'], '-m', 'pip', 'install', '.',
+                             '-vv', '--no-deps', '--no-build-isolation'])
 
 requirements:
   build:
