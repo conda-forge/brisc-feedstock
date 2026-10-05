@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: brisc
-  version: "0.1.7"
+  version: "0.1.8"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 6eb50bb4bfe09179af75ea7869153dd919b709afc711448be7a4096ac49eacda
+  sha256: 21352897b51d9b43c36b0ab10aee7ac3f2ed4561297184714235b0fe90e5dd89
 
 build:
-  number: 1
+  number: 0
   script:
     interpreter: python
     content: |
@@ -56,7 +56,6 @@ requirements:
     - pyarrow >=0.17.0
     - r-seurat
     - ryp
-    - scikit-misc
     - scipy >=0.16.0
     - if: osx
       then: llvm-openmp
