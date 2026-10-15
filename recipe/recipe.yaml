@@ -13,7 +13,7 @@ source:
   sha256: 1a85ef5dacaa8ad7388921e266e04e7016ec8f8bb284b2547c13da881bad9c8e
 
 build:
-  number: 0
+  number: 1
   script:
     interpreter: python
     content: |
@@ -52,7 +52,7 @@ requirements:
     - matplotlib-base >=3.5.0
     - numpy >=1.17.0
     - pandas
-    - polars >=1.41.0
+    - polars >=1.43.0
     - pyarrow >=0.17.0
     - r-seurat
     - ryp
