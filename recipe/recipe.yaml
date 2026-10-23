@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: brisc
-  version: "0.2.0"
+  version: "0.2.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 1a85ef5dacaa8ad7388921e266e04e7016ec8f8bb284b2547c13da881bad9c8e
+  sha256: bad9a2eaab9df2743bfd21da92908c42e8f62b2ea0a17b466439e0d4cc79a48a
 
 build:
-  number: 2
+  number: 0
   script:
     interpreter: python
     content: |
